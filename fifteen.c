@@ -156,7 +156,15 @@ void greet(void)
  */
 void init(void)
 {
-    // TODO
+    int init_value = 1;
+    for (int i = 0; i < d; i++)
+    {
+      for (int j = 0; j < d; j++)
+      {
+        board[i][j] = init_value;
+        init_value++;
+      }
+    }
 }
 
 /**
@@ -164,7 +172,14 @@ void init(void)
  */
 void draw(void)
 {
-    // TODO
+    for (int i = 0; i < d; i++)
+    {
+      for (int j = 0; j < d; j++)
+      {
+        printf("%i ", board[i][j]);
+      }
+      printf("/n");
+    }
 }
 
 /**

@@ -252,6 +252,20 @@ bool move(int tile)
  */
 bool won(void)
 {
-    // TODO
+    int won_state = 1;
+    while (won_state <= d*d - 1)
+    {
+      for (int i = 0; i < d; i++)
+      {
+        for (int j = 0; j < d; j++)
+        {
+          if (board[i][j] == won_state)
+            won_state++;
+        }
+      }
+    }
+    if (won_state == d*d - 1)
+      return true;
+
     return false;
 }

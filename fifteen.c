@@ -162,6 +162,13 @@ void init(void)
       for (int j = 0; j < d; j++)
       {
         board[i][j] = init_value;
+        if (d%2 == 0)
+        {
+          if (init_value == 2)
+            board[i][j] = 1;
+          if (init_value == 1)
+            board[i][j] = 2;
+        }
         init_value--;
       }
     }

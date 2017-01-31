@@ -184,7 +184,7 @@ void draw(void)
       printf("|");
       for (int j = 0; j < d; j++)
       {
-        if (board[i][j]!=0)
+        if (board[i][j] != 0)
           printf("%2i|", board[i][j]);
         else
           printf("%2s|\n", "_");
@@ -212,29 +212,33 @@ bool move(int tile)
         if (current_tile == tile)
         {
           //check is neighbour tiles are empty
-          if (right_tile == 0)
+          if (right_tile == 0 && j + 1 < d)
           {
             right_tile = current_tile;
-            current_tile = 0;
+            board[i][j] = 0;
             return true;
+            break;
           }
-          if (left_tile == 0)
+          if (left_tile == 0 && j - 1 > 0)
           {
             left_tile = current_tile;
-            current_tile = 0;
+            board[i][j] = 0;
             return true;
+            break;
           }
-          if (upper_tile == 0)
+          if (upper_tile == 0 && i -1 > 0)
           {
             upper_tile = current_tile;
-            current_tile = 0;
+            board[i][j] = 0;
             return true;
+            break;
           }
-          if (down_tile == 0)
+          if (down_tile == 0 && i + 1 < d)
           {
             down_tile = current_tile;
-            current_tile = 0;
+            board[i][j] = 0;
             return true;
+            break;
           }
         }
       }

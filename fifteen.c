@@ -117,11 +117,11 @@ int main(int argc, string argv[])
         if (!move(tile))
         {
             printf("\nIllegal move.\n");
-            usleep(500000);
+            usleep(500);
         }
 
         // sleep thread for animation's sake
-        usleep(500000);
+        usleep(500);
     }
 
     // close log
@@ -204,10 +204,38 @@ bool move(int tile)
     {
       for (int j = 0; j < d; j++)
       {
-        if (board[i][j] == tile)
+        int current_tile = board[i][j];
+        int upper_tile = board[i+1][j];
+        int down_tile = board[i-1][j];
+        int left_tile = board[i][j-1];
+        int right_tile = board[i][j+1];
+        if (current_tile == tile)
         {
           //check is neighbour tiles are empty
-
+          if (right_tile == 0)
+          {
+            right_tile = current_tile;
+            current_tile = 0;
+            return true;
+          }
+          if (left_tile == 0)
+          {
+            left_tile = current_tile;
+            current_tile = 0;
+            return true;
+          }
+          if (upper_tile == 0)
+          {
+            upper_tile = current_tile;
+            current_tile = 0;
+            return true;
+          }
+          if (down_tile == 0)
+          {
+            down_tile = current_tile;
+            current_tile = 0;
+            return true;
+          }
         }
       }
     }

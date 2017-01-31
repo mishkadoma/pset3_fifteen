@@ -156,13 +156,13 @@ void greet(void)
  */
 void init(void)
 {
-    int init_value = 1;
+    int init_value = d*d-1;
     for (int i = 0; i < d; i++)
     {
       for (int j = 0; j < d; j++)
       {
         board[i][j] = init_value;
-        init_value++;
+        init_value--;
       }
     }
 }
@@ -174,11 +174,15 @@ void draw(void)
 {
     for (int i = 0; i < d; i++)
     {
+      printf("|");
       for (int j = 0; j < d; j++)
       {
-        printf("%i ", board[i][j]);
+        if (board[i][j]!=0)
+          printf("%2i|", board[i][j]);
+        else
+          printf("%2s|\n", "_");
       }
-      printf("/n");
+      printf("\n\n");
     }
 }
 
@@ -188,7 +192,18 @@ void draw(void)
  */
 bool move(int tile)
 {
-    // TODO
+  //searching tile
+    for (int i = 0; i < d; i++)
+    {
+      for (int j = 0; j < d; j++)
+      {
+        if (board[i][j] == tile)
+        {
+          //check is neighbour tiles are empty
+
+        }
+      }
+    }
     return false;
 }
 

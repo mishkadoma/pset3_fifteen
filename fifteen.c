@@ -187,7 +187,7 @@ void draw(void)
         if (board[i][j] !=  0)
           printf("%2i|", board[i][j]);
         else
-          printf("%2s|\n", "_");
+          printf("%2s|", "_");
       }
       printf("\n\n");
     }
@@ -199,51 +199,55 @@ void draw(void)
  */
 bool move(int tile)
 {
-  //searching tile
+    //searching tile
     for (int i = 0; i < d; i++)
     {
       for (int j = 0; j < d; j++)
       {
         int current_tile = board[i][j];
-        int upper_tile = board[i+1][j];
-        int down_tile = board[i-1][j];
-        int left_tile = board[i][j-1];
-        int right_tile = board[i][j+1];
+        
         if (current_tile == tile)
         {
+          int upper_tile = board[i+1][j];
+          int down_tile = board[i-1][j];
+          int left_tile = board[i][j-1];
+          int right_tile = board[i][j+1];
+
           //check is neighbour tiles are empty
-          if (right_tile == 0 && j + 1 < d)
+          if (right_tile == 0 && j < d-1)
           {
             board[i][j+1] = current_tile;
             board[i][j] = 0;
             return true;
             break;
           }
-          if (left_tile == 0 && j - 1 > 0)
+          else if (left_tile == 0 && j > 0)
           {
             board[i][j-1] = current_tile;
             board[i][j] = 0;
             return true;
             break;
           }
-          if (upper_tile == 0 && i -1 > 0)
+          else if (upper_tile == 0 && i > 0)
           {
             board[i+1][j] = current_tile;
             board[i][j] = 0;
             return true;
             break;
           }
-          if (down_tile == 0 && i + 1 < d)
+          else if (down_tile == 0 && i < d-1)
           {
             board[i-1][j] = current_tile;
             board[i][j] = 0;
             return true;
             break;
           }
+          else
+            return false;
         }
       }
     }
-    return false;
+    return true;
 }
 
 /**

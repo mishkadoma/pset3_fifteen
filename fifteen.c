@@ -205,14 +205,14 @@ bool move(int tile)
       for (int j = 0; j < d; j++)
       {
         int current_tile = board[i][j];
-        
+
         if (current_tile == tile)
         {
           int upper_tile = board[i+1][j];
           int down_tile = board[i-1][j];
           int left_tile = board[i][j-1];
           int right_tile = board[i][j+1];
-
+          
           //check is neighbour tiles are empty
           if (right_tile == 0 && j < d-1)
           {

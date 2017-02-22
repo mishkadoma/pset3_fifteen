@@ -212,35 +212,27 @@ bool move(int tile)
           int down_tile = board[i-1][j];
           int left_tile = board[i][j-1];
           int right_tile = board[i][j+1];
-          
+
           //check is neighbour tiles are empty
           if (right_tile == 0 && j < d-1)
           {
             board[i][j+1] = current_tile;
             board[i][j] = 0;
-            return true;
-            break;
           }
           else if (left_tile == 0 && j > 0)
           {
             board[i][j-1] = current_tile;
             board[i][j] = 0;
-            return true;
-            break;
           }
           else if (upper_tile == 0 && i > 0)
           {
             board[i+1][j] = current_tile;
             board[i][j] = 0;
-            return true;
-            break;
           }
           else if (down_tile == 0 && i < d-1)
           {
             board[i-1][j] = current_tile;
             board[i][j] = 0;
-            return true;
-            break;
           }
           else
             return false;
